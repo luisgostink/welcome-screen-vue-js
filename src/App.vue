@@ -4,16 +4,50 @@ export default {
   data() {
     return {
       title: "Welcome to Opportunity",
-      sheet_id: import.meta.env.VITE_GOOGLE_SHEET_ID,
-      api_token: import.meta.env.VITE_GOOGLE_API_KEY,
+      /* sheet_id: import.meta.env.VITE_GOOGLE_SHEET_ID,
+      api_token: import.meta.env.VITE_GOOGLE_API_KEY, */
     };
   },
 };
+
+const tasks = [
+  {
+    taskName: "Personal Marketing Workshop",
+    taskTime: "15:00",  
+    taskAdress: "Räffelstrasse 12, 8046 Zürich",
+    },
+    
+    {
+    taskName: "Personal Marketing Workshop",
+    taskTime: "15:00",  
+    taskAdress: "Räffelstrasse 12, 8046 Zürich",
+    },
+    
+    {
+      taskName: "Personal Marketing Workshop",
+    taskTime: "15:00",  
+    taskAdress: "Räffelstrasse 12, 8046 Zürich",
+    }
+  ];
+
+  function 
+
 </script>
 <template>
   <div id="app">
-    <h1 class="site-title">{{ title }}</h1>
+    
+    <div>
+      <h1 class="site-title">{{ title }}</h1>
+    </div>
+
+    <div>
+        <h1>Date </h1>
+    </div>
+
   </div>
+
+
+
 </template>
 <style>
 #app {
