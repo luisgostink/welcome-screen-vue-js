@@ -32,26 +32,32 @@ export default {
   },
   }
 
-
 </script>
 <template>
+
   <div id="application">
+
     <div>
       <h1 class="site-title">{{ title }}</h1>
     </div>
+
     <div class="date">
       <h2>{{ date }}</h2>
     </div>
 
-    <div v-for="data in entries" class="card">
-        <p class="card-time">{{data[0]}}</p>
-        <p>{{ data[1] }}</p> 
-        <p class="card-title">{{ data[2] }}</p>
-        <p class="card-description">{{ data[3] }}</p>
+    <div class="wrapper" >
+        <div v-if="entries.length > 0" v-for="data in entries" class="card">
+            <p class="card-time">{{ data[0] }}</p>
+            <p class="card-title">{{ data[2] }}</p>
+            <p class="card-description">{{ data[3] }}</p>
+        </div>
+
+      <div v-else>
+        <h1>No tasks for today</h1>
+      </div>
     </div>
 
-
-
+    <!---IF THERE'S NO TASK V-IF DIRECTIVE TO DO-->
   
   </div>
 
@@ -75,33 +81,66 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   margin: 60px;
   color: #323d4a;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-title {
+color: rgba(50, 61, 74, 1);
+font-family: "Inter", Helvetica, Arial, sans-serif;
+font-size: 62px;
+font-weight: 900;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.date {
+  color: rgba(154, 167, 177, 1);
+  font-family: "Inter", Helvetica, Arial, sans-serif;
+  font-size: 62px;
+  text-align: left;
+  margin-bottom: 36px;
+
 }
 
 .card {
   display: flexbox; 
   background-color: darkblue;
-  padding: 20px 50px 20px 50px; 
-  font-weight: bold;
-  font-size: 40px;
   font-family: "Inter", Helvetica, Arial, sans-serif;
-  border-radius: 10px;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  height: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;  
+  padding: 30px;
+  line-height: 20px;
+}
+
+.wrapper {
+  margin-bottom: 120px;
 }
 
 .card-time{
-  color: red;
+  color:rgba(235, 94, 0, 1);
   font-weight: bold;
+  font-family: "Inter", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  text-align: left;
 }
 
 .card-title {
-  color: orange;
-  font-weight: bold;
+  color:rgba(255, 191, 171, 1);
+  font-weight: 900;
+  font-family: "Inter", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .card-description {
-    font-size: 20px;
-    color: bisque;
+    font-size: 30px;
+    color:rgba(255, 191, 171, 1);
 }
 
 .footer {
@@ -116,6 +155,7 @@ export default {
 .logos {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .logopic {
@@ -125,17 +165,18 @@ export default {
 }
 
 body {
-  background-color: lightcyan;
+  background-color: rgba(232, 239, 244, 1);
+  margin: 0px; 
 }
 
-@media only screen and (max-width: 850px){
+/* @media only screen and (max-width: 850px){
   body  {
     background-color: brown;
   }
   .card {
     padding: 0px; 
   }
-}
+} */
 
     
 </style>
