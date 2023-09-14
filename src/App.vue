@@ -9,7 +9,7 @@ export default {
       api_token: import.meta.env.VITE_GOOGLE_API_KEY, 
       entries: [],
       currentDate: "",
-      timeInterval: "",  
+      timeInterval: null, // Initializes time interval to null.   
     };
   },
   computed: {
@@ -26,11 +26,28 @@ export default {
       this.entries = data.valueRanges[0].values;
       console.log(this.entries); 
       },
+
+      refreshData() {
+      // Set up an interval to refresh data every 30 seconds
+      setInterval(() => {
+        this.getData();
+      }, 30000); // 30 seconds in milliseconds
+      console.log("Data refresh interval started"); // Log a message when the interval is started
+    },
+
+    stopDataRefresh() {
+      // Clear the interval when the component is destroyed
+      clearInterval(this.timeInterval);
+      console.log("Data refresh interval stopped"); // Log a message when the interval is stopped
+
     }, 
+  },
+
     mounted() {
     this.getData(); // get first initial data and then wait for the next update
+    this.refreshData(); // start refresh data interval. 
   },
-  }
+}
 
 </script>
 <template>
@@ -53,12 +70,11 @@ export default {
         </div>
 
       <div v-else>
-        <h1>No tasks for today</h1>
+        <h1 class="site-title">No tasks for today</h1>
       </div>
     </div>
 
-    <!---IF THERE'S NO TASK V-IF DIRECTIVE TO DO-->
-  
+
   </div>
 
   <footer class="footer">
@@ -96,12 +112,14 @@ text-align: left;
 
 }
 
-.date {
+.date h2 {
   color: rgba(154, 167, 177, 1);
   font-family: "Inter", Helvetica, Arial, sans-serif;
   font-size: 62px;
+  font-weight: 500;
   text-align: left;
-  margin-bottom: 36px;
+  margin-bottom: 12px;
+  margin-top: 12px; 
 
 }
 
@@ -124,7 +142,7 @@ text-align: left;
   color:rgba(235, 94, 0, 1);
   font-weight: bold;
   font-family: "Inter", Helvetica, Arial, sans-serif;
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 900;
   text-align: left;
 }
@@ -133,13 +151,12 @@ text-align: left;
   color:rgba(255, 191, 171, 1);
   font-weight: 900;
   font-family: "Inter", Helvetica, Arial, sans-serif;
-  font-size: 40px;
-  letter-spacing: 0em;
+  font-size: 28px;
   text-align: left;
 }
 
 .card-description {
-    font-size: 30px;
+    font-size: 28px;
     color:rgba(255, 191, 171, 1);
 }
 
