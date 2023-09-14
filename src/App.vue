@@ -123,7 +123,7 @@ text-align: left;
 
 .card {
   display: flexbox; 
-  background-color: darkblue;
+  background-color: rgb(48, 223, 239);
   font-family: "Inter", Helvetica, Arial, sans-serif;
   height: auto;
   margin-top: 50px;
