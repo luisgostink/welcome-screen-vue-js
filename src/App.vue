@@ -69,11 +69,10 @@ export default {
             <p class="card-description">{{ data[3] }}</p>
         </div>
 
-      <div v-else>
-        <h1 class="site-title">No tasks for today</h1>
-      </div>
+        <div v-else>
+          <h1 class="site-title">No tasks for today</h1>
+        </div>
     </div>
-
 
   </div>
 
@@ -95,7 +94,6 @@ export default {
   font-family: "Inter", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 60px;
   color: #323d4a;
   max-width: 960px;
   margin-left: auto;
